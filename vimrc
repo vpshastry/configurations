@@ -114,3 +114,13 @@ function! s:DiffWithSaved()
         exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+
+" Enable Tlist toggle with F8
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+nnoremap <silent> <F8> :TlistToggle<CR>
+let Tlist_Show_One_File = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Enable_Fold_Column = 0
+" End Tlist options
