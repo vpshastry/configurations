@@ -124,3 +124,6 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Use_Right_Window = 1
 let Tlist_Enable_Fold_Column = 0
 " End Tlist options
+
+"ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
