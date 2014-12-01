@@ -4,6 +4,7 @@
 [color]
 	diff=always
 	branch=always
+        log=always
 [http]
 	sslcainfo = /root/certs/selfsigned.crt
 	sslVerify = false
