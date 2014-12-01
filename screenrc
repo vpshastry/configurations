@@ -1,3 +1,12 @@
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%w%=%m/%d %c"
+
+#Save lots of scrollback
+defscrollback 50000
+
+# Suppress trailing blank lines when scrolling up in the history buffer.
+compacthist on
+
+# Alternative screen for vim and less
+altscreen on
