@@ -127,3 +127,4 @@ let Tlist_Enable_Fold_Column = 0
 
 "ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/tagbar.vim
