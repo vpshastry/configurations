@@ -58,8 +58,41 @@ set smartcase
 "always show the status line
 set laststatus=2
 
+" When you type the first tab hit will complete as much as possible, the second
+" tab hit will provide a list, the third and subsequent tabs will cycle through
+" completion options so you can complete the file without further keys
+set wildmode=longest,list,full
+set wildmenu
+
+" Maximum width of text that is being inserted. A longer line will be broken
+" after whitespace to get this width. A zero value disables this.
+set textwidth=79
+
 " auto remove trailing spaces
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
+
+" Highlight the trailing whitespace
+function! HLWhitespace()
+        highlight ExtraWhitespace ctermbg=red guibg=red
+        match ExtraWhitespace /\s\+$/
+        autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+        autocmd InsertEnter * match ExtraWhitespace
+        /\s\+\%#\@<!$/
+        autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+        autocmd BufWinLeave * call clearmatches()
+endfunction
+
+call HLWhitespace()
+
+function! TrimWhiteSpace()
+        %s/\s\+$//e
+endfunction
+" To 'auto-trim' trailing whitespace
+"autocmd BufWritePre     * :call TrimWhiteSpace()
+
+au FileType c setl sw=8 sts=8 et
+au FileType sh setl sw=2 sts=2 et
+au FileType java setl sw=4 sts=4 et
 
 " cscope + vim settings
 if has("cscope")
