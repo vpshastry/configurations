@@ -1,19 +1,14 @@
 set colorcolumn=80
 
-" Everthin for python
-au BufRead,BufNewFile *.py,*pyw source ~/.vimrc_for_python
-au BufRead,BufNewFile *.py,*pyw enable syntax highlighting
-au BufRead,BufNewFile *.py,*pyw syntax enable
-au BufRead,BufNewFile *.py,*pyw set ts=2
-au BufRead,BufNewFile *.py,*pyw set shiftwidth=2
-au BufRead,BufNewFile *.py,*pyw let python_highlight_all = 1
-
 " show the matching part of the pair for [] {} and ()
 set showmatch
 
 " Ctrl j inserts a blank line below and ctrl k inserts above
 nmap <C-k> O<Esc>j
 nmap <C-j> o<Esc>k
+
+set wildmenu
+set wildmode=longest,list,full
 
 " use 'space' to enter a single character in normal mode; similar to 'r'
 nmap <Space> i_<Esc>r
@@ -68,6 +63,9 @@ set smartcase
 
 "always show the status line
 set laststatus=2
+
+" keep n lines visible when scrolling
+set scrolloff=10
 
 " auto remove trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
