@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/varun/workspace/git/main/util/net'
+let g:netrw_dirhist_2='/home/varun/workspace/git/glusterfs/doc/developer-guide/data-structures'
+let g:netrw_dirhist_3='/home/varun/workspace/git/main/util/net'

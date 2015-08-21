@@ -1,14 +1,58 @@
+" Trying Vundle
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+"Plugin 'Valloric/YouCompleteMe'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+"Plugin 'user/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" End Trying vundle
+
 set colorcolumn=80
 
-" show the matching part of the pair for [] {} and ()
-set showmatch
+syntax on
+set wildmenu
+set wildmode=longest,list,full
 
 " Ctrl j inserts a blank line below and ctrl k inserts above
 nmap <C-k> O<Esc>j
 nmap <C-j> o<Esc>k
-
-set wildmenu
-set wildmode=longest,list,full
 
 " use 'space' to enter a single character in normal mode; similar to 'r'
 nmap <Space> i_<Esc>r
@@ -24,11 +68,11 @@ set cursorline
 hi CursorLine cterm=NONE,underline guibg=#F4F4F4
 
 " Autocomplete the braces
-inoremap ( ()<Esc>:let leavechar=")"<CR>i
-inoremap [ []<Esc>:let leavechar="]"<CR>i
+"inoremap ( ()<Esc>:let leavechar=")"<CR>i
+"inoremap [ []<Esc>:let leavechar="]"<CR>i
 
 " For gluster test scripts set syn as bash
-autocmd BufNewFile,BufRead *.t set syn=sh
+"autocmd BufNewFile,BufRead *.t set syn=sh
 
 " Highlight search results
 set hlsearch
@@ -40,10 +84,10 @@ set incsearch
 set expandtab
 
 " autoindent
-set autoindent
+"set autoindent
 
 " set c style indentation
-set cindent
+"set cindent
 
 " set partial command
 set showcmd
@@ -63,9 +107,6 @@ set smartcase
 
 "always show the status line
 set laststatus=2
-
-" keep n lines visible when scrolling
-set scrolloff=10
 
 " auto remove trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
@@ -137,3 +178,12 @@ let Tlist_Enable_Fold_Column = 0
 "ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/tagbar.vim
+
+"syntastic
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+
+" Switch betwen header and source files
+nmap ,s :e %<.cc<CR>
+nmap ,S :e %<.h<CR>
