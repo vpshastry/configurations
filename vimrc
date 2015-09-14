@@ -17,10 +17,6 @@ command W w !sudo tee % > /dev/null
 set cursorline
 hi CursorLine cterm=NONE,underline guibg=#F4F4F4
 
-" Autocomplete the braces
-inoremap ( ()<Esc>:let leavechar=")"<CR>i
-inoremap [ []<Esc>:let leavechar="]"<CR>i
-
 " For gluster test scripts set syn as bash
 autocmd BufNewFile,BufRead *.t set syn=sh
 
