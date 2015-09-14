@@ -1,21 +1,22 @@
-#!/bin/sh
+#!/bin/bash
 
-backup($@) {
+backup() {
   if [ "$1" != "" ]; then
           CONFIG_BACKUP="${1// /-}"
   else
           cur_time=`date`
-          CONFIG_BACKUP="~/config_backup_${cur_time// /-}"
+          CONFIG_BACKUP="/home/`whoami`/config_backup_${cur_time// /-}"
   fi
-  mkdir "$CONFIG_BACKUP"
-  cp ~/.vimrc "$CONFIG_BACKUP/"
-  cp -R ~/.vim/ "$CONFIG_BACKUP/"
-  cp ~/.screenrc "$CONFIG_BACKUP/"
-  cp ~/.gitconfig "$CONFIG_BACKUP/"
-  cp ~/.gdbinit "$CONFIG_BACKUP/"
+
+  mkdir $CONFIG_BACKUP || return -1
+  cp ~/.vimrc "$CONFIG_BACKUP/" || return -1
+  cp -R ~/.vim/ "$CONFIG_BACKUP/" || return -1
+  cp ~/.screenrc "$CONFIG_BACKUP/" || return -1
+  cp ~/.gitconfig "$CONFIG_BACKUP/" || return -1
+  cp ~/.gdbinit "$CONFIG_BACKUP/" || return -1
 }
 
-backup || exit -1
+backup $@ || exit -1
 cp vimrc ~/.vimrc
 cp -R vim ~/.vim/
 cp screenrc ~/.screenrc
