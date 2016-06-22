@@ -20,6 +20,10 @@ hi CursorLine cterm=NONE,underline guibg=#F4F4F4
 " For gluster test scripts set syn as bash
 autocmd BufNewFile,BufRead *.t set syn=sh
 
+" Bash like autocompletion of file names
+set wildmode=longest,list,full
+set wildmenu
+
 " Highlight search results
 set hlsearch
 
