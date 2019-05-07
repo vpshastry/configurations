@@ -1,10 +1,11 @@
 [user]
 	name = Varun Shastry
-	email = vshastry@redhat.com
+	email = vrn.shastry@gmail.com
 [color]
 	diff=always
 	branch=always
         log=always
+        grep=always
 [http]
 	sslcainfo = /root/certs/selfsigned.crt
 	sslVerify = false
@@ -18,5 +19,13 @@
         co = checkout
         ds = diff --staged
         log-fancy = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=relative
+	d = difftool
 [gitreview]
 	username = vshastry
+[push]
+	default = tracking
+[diff]
+	renamelimit = 0
+	tool = vimdiff
+[difftool]
+	prompt = false

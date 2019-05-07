@@ -2,7 +2,7 @@
 #hardstatus alwayslastline
 #hardstatus string "%w%=%m/%d %c"
 
-caption always "%{= .w}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %c"
+caption always "%{= .w}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %C %a"
 
 #Save lots of scrollback
 defscrollback 50000

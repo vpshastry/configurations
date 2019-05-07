@@ -1,4 +1,5 @@
 source /etc/vimrc
+syntax on
 
 set colorcolumn=80
 
@@ -95,16 +96,25 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'sjl/gundo.vim'
 Plugin 'rking/ag.vim'
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'PProvost/vim-ps1'
 "Plugin 'scrooloose/nerdtree'
 Plugin 'congma/pylint.vim'
+Plugin 'fatih/vim-go'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'mileszs/ack.vim'
+Plugin 'Chiel92/vim-autoformat'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'artur-shaik/vim-javacomplete2'
 "Plugin 'xolox/vim-easytags'
+
+" Beyond Vim7.4 no need to add this flag.
+let g:go_version_warning = 0
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 
 let g:jedi#use_tabs_not_buffers = 1
@@ -201,6 +211,19 @@ function! s:btags()
     echohl None
   endtry
 endfunction
+
+" Command for git grep
+" " - fzf#vim#grep(command, with_column, [options], [fullscreen])
+command! -bang -nargs=* GGrep
+   \ call fzf#vim#grep(
+   \   'git grep --line-number '.shellescape(<q-args>), 0,
+   \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
 
 command! BTags call s:btags()
 nmap <leader>s :Tags<cr>
